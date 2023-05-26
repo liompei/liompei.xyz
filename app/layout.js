@@ -1,6 +1,7 @@
 import './globals.css'
 import {Inter} from 'next/font/google'
 import Container from "@/components/Container";
+import {AnimatePresence} from "framer-motion";
 
 const inter = Inter({subsets: ['latin']})
 
