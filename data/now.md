@@ -24,7 +24,7 @@ title: 我正在做什么
 ### 我的装备
 - 16" Macbook Pro (2018)
 - 27" 4K Dell U2720QM
-- Logitech G304 Mouse
+- Logitech MX Anywhere3 Mouse
 - HHKB Professional HYBRID（White）
 - Server（Debian 11）
 
