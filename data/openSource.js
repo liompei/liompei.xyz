@@ -7,7 +7,7 @@ export default [
   },
   {
     title: 'GuugooXp',
-    description: 'Xposed插件，在某app中使用照片代替人脸识别',
+    description: 'Xposed插件，在某app中使用照片代替人脸打卡',
     href: 'https://github.com/liompei/GuugooXp'
   }
 ]

@@ -6,8 +6,8 @@ import openSource from "@/data/openSource";
 import Card from "@/components/Card";
 
 export default async function Page() {
-  const {frontMatter, content} = await getFileBySlug('projects')
-  const title = frontMatter.title
+  // const {frontMatter, content} = await getFileBySlug('projects')
+  // const title = frontMatter.title
   return (
     <div className='flex flex-col items-start'>
       <PageTitle title='我的项目' titleCls='text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-500'>
