@@ -9,7 +9,7 @@ export default async function Page() {
   // const {frontMatter, content} = await getFileBySlug('projects')
   // const title = frontMatter.title
   return (
-    <div className='flex flex-col items-start'>
+    <div className='flex flex-col items-start bg-green-400'>
       <PageTitle title='我的项目' titleCls='text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-500'>
         这里主要展示了我工作和业余的一些项目
       </PageTitle>

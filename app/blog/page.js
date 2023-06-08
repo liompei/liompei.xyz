@@ -16,7 +16,7 @@ export default async function Page() {
 
 
   return (
-    <div className='prose max-w-none'>
+    <div className='prose max-w-none bg-green-400'>
       <h1>{title}</h1>
       <MDXRemote source={content}/>
       {!filteredBlogPosts.length && (

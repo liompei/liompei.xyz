@@ -1,9 +1,112 @@
 import Image from 'next/image'
 import Container from "@/components/Container";
+import PageTitle from "@/components/PageTitle";
+import {MDXRemote} from "next-mdx-remote/rsc";
+import Link from "next/link";
+import {getAllFilesFrontMatter} from "@/lib/mdx";
+import BlogPost from "@/components/BlogPost";
 
 export default async function Home() {
+
+  const posts = await getAllFilesFrontMatter("blog")
+  const filteredBlogPosts = posts.sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+  )
+
+  const projects = await getAllFilesFrontMatter("projects")
+  const filteredProjectPosts = projects
+
   return (
-    <div>首页</div>
+    <div className='flex flex-col items-start min-w-full bg-green-400'>
+      <div className='space-y-4 mb-16'>
+        <h1 className='font-bold text-2xl md:text-3xl leading-9'>
+          你好，我是贝黎明
+        </h1>
+        <p className="leading-9">
+          我是一名&nbsp;
+          <Link
+            className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-500 border-pink-500 border-b border-dotted no-underline hover:opacity-70"
+            href="/projects">
+            研发工程师
+          </Link>
+          &nbsp;、&nbsp;
+          <Link
+            className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500 border-b border-dotted no-underline border-cyan-500 hover:opacity-70"
+            href="https://github.com/zuozizhen">
+            独立开发者
+          </Link>
+          ，曾在字节跳动负责&nbsp;
+          <Link className="font-bold border-b border-dotted no-underline border-gray-500 hover:opacity-70 text-gray-500"
+                href="https://www.smartisan.com/jianguopro3/os">
+            Giant OS
+          </Link>
+          &nbsp;系统应用开发。也曾参与创业公司负责&nbsp;
+          <Link className="font-bold border-b border-dotted no-underline border-gray-500 hover:opacity-70 text-gray-500"
+                href="https://mastergo.com">
+            Alice
+          </Link>
+          &nbsp; 0-1 的产品和开发工作。&nbsp;你可以在&nbsp;
+          <Link
+            className="font-bold border-b border-dotted no-underline text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-500 border-rose-500 hover:opacity-70"
+            href="https://github.com/liompei">
+            Github
+          </Link>
+          &nbsp;了解我，或者了解我现在&nbsp;
+          <Link
+            className="font-bold border-b border-dotted no-underline text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500 border-indigo-500 hover:opacity-70"
+            href="/now">
+            正在做的事情
+          </Link>
+          &nbsp;和更多&nbsp;
+          <Link
+            className='font-bold border-b border-dotted no-underline text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500 border-yellow-500 hover:opacity-70'
+            href="/about">
+            关于我
+          </Link>
+          &nbsp;的信息。
+        </p>
+      </div>
+      <h3 className="font-bold text-lg sm:text-xl mb-8 text-gray-900 dark:text-gray-100">
+        写作
+      </h3>
+      <div className="mb-20">
+        <div className="mb-4 mt-4">
+          {!filteredBlogPosts.length && (
+            <p className="text-gray-500 dark:text-gray-500 mb-4">
+              没有找到文章
+            </p>
+          )}
+          {filteredBlogPosts.slice(0, 3).map((frontMatter) => (
+            <BlogPost key={frontMatter.title} {...frontMatter} />
+          ))}
+        </div>
+        <Link className='flex gap-1 items-center w-fit font-bold no-underline hover:opacity-70 text-gray-500'
+              href="/blog">
+          查看全部
+          <i className="ri-arrow-right-line"></i>
+        </Link>
+      </div>
+      <h3 className="font-bold text-lg sm:text-xl mb-8 text-gray-900 dark:text-gray-100">
+        项目
+      </h3>
+      <div className="mb-20">
+        <div className="mb-8 mt-4 gap-8 grid grid-cols-1 sm:grid-cols-2">
+          {!filteredProjectPosts.length && (
+            <p className="text-gray-500 dark:text-gray-500 mb-4">
+              没有找到项目
+            </p>
+          )}
+          {/*{filteredProjectPosts.slice(0, 2).map((frontMatter) => (*/}
+          {/*  <DesignCard key={frontMatter.title} {...frontMatter} />*/}
+          {/*))}*/}
+        </div>
+        <Link className='flex gap-1 items-center w-fit font-bold no-underline hover:opacity-70 text-gray-500'
+              href="/projects">
+          查看全部
+          <i className="ri-arrow-right-line"></i>
+        </Link>
+      </div>
+    </div>
   )
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
